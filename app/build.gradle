@@ -147,6 +147,9 @@ dependencies {
     // Downloadable Calligraphy
     implementation 'com.github.takahirom.downloadable.calligraphy:downloadable-calligraphy:0.1.2'
 
+    // Flexbox layout
+    implementation 'com.google.android:flexbox:0.3.2'
+
     // LeakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 
