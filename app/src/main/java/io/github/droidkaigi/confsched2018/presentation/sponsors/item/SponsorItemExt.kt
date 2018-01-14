@@ -3,11 +3,11 @@ package io.github.droidkaigi.confsched2018.presentation.sponsors.item
 import android.content.Context
 import android.support.annotation.ColorInt
 import android.support.constraint.ConstraintLayout
+import android.support.constraint.ConstraintSet
 import android.support.v4.content.ContextCompat
 import android.view.View
 import io.github.droidkaigi.confsched2018.R
 import io.github.droidkaigi.confsched2018.model.SponsorPlan
-import io.github.droidkaigi.confsched2018.util.ext.cloneConstraint
 
 fun getSponsorItemSpanSize(planType: SponsorPlan.Type, spanCount: Int) = when (planType) {
     SponsorPlan.Type.Platinum, SponsorPlan.Type.TechnicalForNetwork -> spanCount / 2
@@ -42,7 +42,7 @@ interface SponsorItemExt {
             return
         }
 
-        val newConstraint = cloneConstraint()
+        val newConstraint = ConstraintSet().apply { clone(this@adjustAspectRatioConstraint) }
         newConstraint.setDimensionRatio(target.id, newDimensionRatio)
         newConstraint.applyTo(this)
     }
