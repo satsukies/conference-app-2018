@@ -4,12 +4,15 @@ import dagger.Module
 import dagger.Provides
 import io.github.droidkaigi.confsched2018.data.api.DroidKaigiApi
 import io.github.droidkaigi.confsched2018.data.api.FeedApi
+import io.github.droidkaigi.confsched2018.data.api.SponsorApi
 import io.github.droidkaigi.confsched2018.data.db.FavoriteDatabase
 import io.github.droidkaigi.confsched2018.data.db.SessionDatabase
 import io.github.droidkaigi.confsched2018.data.repository.FeedDataRepository
 import io.github.droidkaigi.confsched2018.data.repository.FeedRepository
 import io.github.droidkaigi.confsched2018.data.repository.SessionDataRepository
 import io.github.droidkaigi.confsched2018.data.repository.SessionRepository
+import io.github.droidkaigi.confsched2018.data.repository.SponsorPlanDataRepository
+import io.github.droidkaigi.confsched2018.data.repository.SponsorPlanRepository
 import io.github.droidkaigi.confsched2018.util.rx.AppSchedulerProvider
 import io.github.droidkaigi.confsched2018.util.rx.SchedulerProvider
 import javax.inject.Singleton
@@ -31,6 +34,11 @@ internal object AppModule {
             feedApi: FeedApi
     ): FeedRepository =
             FeedDataRepository(feedApi)
+
+    @Singleton @Provides @JvmStatic
+    fun provideSponsorPlanRepository(
+            sponsorApi: SponsorApi
+    ): SponsorPlanRepository = SponsorPlanDataRepository(sponsorApi)
 
     @Singleton @Provides @JvmStatic
     fun provideSchedulerProvider(): SchedulerProvider = AppSchedulerProvider()
